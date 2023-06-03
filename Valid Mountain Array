@@ -1,0 +1,62 @@
+https://leetcode.com/problems/valid-mountain-array/description/
+
+class Solution {
+public:
+    bool validMountainArray(vector<int>& arr)
+    {
+        if(arr.size()<3)
+        {
+            return false;
+        }
+
+        int n=arr.size();
+
+        int max=INT_MIN;
+        int min=INT_MAX;
+        
+        //{0,2,3,4,5,2,1,0}
+        for(int i=0;i<n;i++)
+        {
+            int num=arr[i];
+            if(num>max)
+            {
+                max=num;
+            }
+            else
+            if(num==max)         // if any two number is same at any point then return false
+            {
+                return false;
+            }
+            else
+            {
+                if(num<min)
+                {
+                    min=num;
+                }
+                else
+                if(num==min)
+                {
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        
+        //if array is {9,8,7,6,5,4,3,2,1} or if array is {1,2,3,4,5,6,7,8,9} then these below conditions will help because in these there will be no mountain array.
+
+        if(max==arr[n-1])
+        {
+            return false;
+        }
+
+        if(max==arr[0])
+        {
+            return false;
+        }
+
+        return true;
+    }
+};
