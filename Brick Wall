@@ -1,0 +1,36 @@
+https://leetcode.com/problems/brick-wall/description/
+
+int leastBricks(vector<vector<int>>& wall) 
+    {
+        int n=wall.size();
+
+        int len=0;
+        for(int i=0;i<wall[0].size();i++)
+        {
+            len+=wall[0][i];
+        }
+
+        unordered_map<int,int> mp;
+
+        for(int i=0;i<n;i++)
+        {
+            int curr=0;
+         // here we have taken wall[i].size()-1 because we dont want to include last length because after that we can not put vertical line
+         // " You cannot draw a line just along one of the two vertical edges of the wall"
+            for(int j=0;j<wall[i].size()-1;j++)
+            {
+                curr+=wall[i][j];
+                mp[curr]++;
+            }
+        }
+
+        int m=0;
+
+        for(auto p:mp)
+        {
+            m=max(m,p.second);
+        }
+
+        return n-m;
+
+    }
