@@ -1,0 +1,40 @@
+//code chef question:https://www.codechef.com/problems/CORE4
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() 
+{
+	int n;
+	cin>>n;
+	vector<pair<int,int>> vec;
+	
+	unordered_map<int,int> mx;
+	unordered_map<int,int> my;
+	
+	int sum=0;
+	
+	for(int i=0;i<n;i++)
+	{
+	    int x,y;
+	    cin>>x>>y;
+	    
+	    mx[x]++;
+	    my[y]++;
+	    
+	    vec.push_back({x,y});
+	}
+	
+	for(int i=0;i<vec.size();i++)
+	{
+	    int x_cor=vec[i].first;
+	    int y_cor=vec[i].second;
+	    
+	    int num1=mx[x_cor];
+	    int num2=my[y_cor];
+	    
+	    sum+=(num1-1)*(num2-1);
+	}
+	
+	cout<<sum%10000<<endl;
+}
