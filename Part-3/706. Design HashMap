@@ -1,0 +1,55 @@
+Leetcode:- https://leetcode.com/problems/design-hashmap/description/
+
+class MyHashMap {
+public:
+    vector<pair<int,int>> vec;
+    MyHashMap() 
+    {
+        
+    }
+    
+    void put(int key, int value) 
+    {
+        bool flag=false;
+        for(int i=0;i<vec.size();i++)
+        {
+            if(vec[i].first==key)
+            {
+                vec[i].second=value;
+                flag=true;
+            }
+        }
+
+        if(flag==false)
+        {
+            vec.push_back({key,value});
+        }
+    }
+    
+    int get(int key) 
+    {
+        bool flag=false;
+        for(int i=0;i<vec.size();i++)
+        {
+            if(vec[i].first==key)
+            {
+                flag=true;
+                return vec[i].second;
+            }
+        }
+
+       return -1;
+
+    }
+    
+    void remove(int key) 
+    {
+        for(int i=0;i<vec.size();i++)
+        {
+            if(vec[i].first==key)
+            {
+                vec.erase(vec.begin()+i);
+            }
+        }
+    }
+};
